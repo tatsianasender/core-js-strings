@@ -147,7 +147,15 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return String(str.replace(value, ''));
+  const firstIndex = str.indexOf(value);
+
+  if (firstIndex !== -1) {
+    const start = str.substring(0, firstIndex);
+    const end = str.substring(firstIndex + value.length);
+    return start + end;
+  }
+
+  return str;
 }
 
 /**
@@ -162,8 +170,16 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const lastIndex = str.lastIndexOf(value);
+
+  if (lastIndex !== -1) {
+    const start = str.substring(0, lastIndex);
+    const end = str.substring(lastIndex + value.length);
+    return start + end;
+  }
+
+  return str;
 }
 
 /**
@@ -456,9 +472,8 @@ function unbracketTag(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  // return str.split(';');
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
