@@ -54,7 +54,7 @@ function isString(value) {
  *   concatenateStrings('', 'bb') => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return value1 + value2;
+  return value1.concat('', value2);
 }
 
 /**
@@ -147,7 +147,7 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
+  return String(str.replace(value, ''));
 }
 
 /**
@@ -233,11 +233,11 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  // const min = String(minutes).length > 1 ? String(minutes) : `0${minutes}`;
-  // const sec = String(seconds).length > 1 ? String(seconds) : `0${seconds}`;
-  // return `${min}:${sec}`;
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+    2,
+    '0'
+  )}`;
 }
 
 /**
